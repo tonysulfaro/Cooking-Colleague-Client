@@ -55,7 +55,7 @@ function generateHome(search_term) {
                         <div class="card-body">
                             <h5 class="card-title">` + recipe_label + `</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <button onclick=window.open('` + recipe_url + `','_blank','resizable=yes') class="btn btn-secondary">Start</a>
+                            <button onclick=window.open('` + recipe_url + `','_blank') class="btn btn-secondary">Start</a>
                         </div>
                     </div>
                 </div>`;
@@ -114,7 +114,7 @@ function generateRecipieResults(search_term) {
         </div>`;
     featured_container.insertAdjacentHTML('beforeend', parts);
 
-    var url = 'https://api.edamam.com/search?q=' + search_thing + '&app_id=d63abbc7&app_key=ad82d4418f075d5a656da60a47ad8246&from=0&to=9';
+    var url = 'https://api.edamam.com/search?q=' + search_thing + '&app_id=d63abbc7&app_key=ad82d4418f075d5a656da60a47ad8246&from=0&to=12';
     var obj = ""
 
     var request = new XMLHttpRequest();
@@ -139,11 +139,11 @@ function generateRecipieResults(search_term) {
         let count = 0;
         let previews = `<div class="row">`;
 
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < 12; i++) {
             //console.log(JSON.stringify(obj[i].url))
             //console.log(JSON.stringify(obj[i].image));
 
-            let recipe_url = JSON.stringify(obj.hits[i].recipe.url);
+            let recipe_url = (obj.hits[i].recipe.url);
             let recipe_label = JSON.stringify(obj.hits[i].recipe.label);
             let recipe_pic = obj.hits[i].recipe.image;
 
@@ -154,7 +154,7 @@ function generateRecipieResults(search_term) {
                         <div class="card-body">
                             <h5 class="card-title">` + recipe_label + `</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <button onclick=start_recipe() class="btn btn-secondary">Start</button>
+                            <button onclick=window.open('` + recipe_url + `','_blank') class="btn btn-secondary">Start</button>
                         </div>
                     </div>
                 </div>`;
