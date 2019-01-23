@@ -47,6 +47,8 @@ function generateHome(search_term) {
             let recipe_url = (obj.hits[i].recipe.url);
             let recipe_label = JSON.stringify(obj.hits[i].recipe.label);
             let recipe_pic = obj.hits[i].recipe.image;
+            let recipe_calories = obj.hits[i].recipe.calories;
+            let recipe_time = obj.hits[i].recipe.totalTime;
 
             if (count < 3) {
                 previews = previews + `<div class="col-md-4">
@@ -54,7 +56,8 @@ function generateHome(search_term) {
                         <img src="` + recipe_pic + `" height="180" class="img-food-card">
                         <div class="card-body">
                             <h5 class="card-title">` + recipe_label + `</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Time: ` + recipe_time + ` minutes.</p>
+                            <p class="card-text">` + parseInt(recipe_calories) + ` Calories.</p>
                             <button onclick=window.open('` + recipe_url + `','_blank') class="btn btn-secondary">Start</a>
                         </div>
                     </div>
@@ -66,7 +69,8 @@ function generateHome(search_term) {
                         <img src="https://img.huffingtonpost.com/asset/5c4344752400003801486921.jpeg" height="180" class="img-food-card">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Time: ` + recipe_time + ` minutes.</p>
+                            <p class="card-text">` + parseInt(recipe_calories) + ` Calories.</p>
                             <button class="btn btn-secondary">Start</button>
                         </div>
                     </div>
@@ -146,6 +150,8 @@ function generateRecipieResults(search_term) {
             let recipe_url = (obj.hits[i].recipe.url);
             let recipe_label = JSON.stringify(obj.hits[i].recipe.label);
             let recipe_pic = obj.hits[i].recipe.image;
+            let recipe_calories = obj.hits[i].recipe.calories;
+            let recipe_time = obj.hits[i].recipe.totalTime;
 
             if (count < 3) {
                 previews = previews + `<div class="col-md-4">
@@ -153,7 +159,8 @@ function generateRecipieResults(search_term) {
                         <img src="` + recipe_pic + `" height="180" class="img-food-card">
                         <div class="card-body">
                             <h5 class="card-title">` + recipe_label + `</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Time: ` + recipe_time + ` minutes.</p>
+                            <p class="card-text">` + parseInt(recipe_calories) + ` Calories.</p>
                             <button onclick=window.open('` + recipe_url + `','_blank') class="btn btn-secondary">Start</button>
                         </div>
                     </div>
@@ -165,7 +172,8 @@ function generateRecipieResults(search_term) {
                         <img src="https://img.huffingtonpost.com/asset/5c4344752400003801486921.jpeg" height="180" class="img-food-card">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Time: ` + recipe_time + ` minutes.</p>
+                            <p class="card-text">` + parseInt(recipe_calories) + ` Calories.</p>
                             <button class="btn btn-secondary">Start</button>
                         </div>
                     </div>
