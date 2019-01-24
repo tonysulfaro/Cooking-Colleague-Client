@@ -109,6 +109,40 @@ function generateRecipieResults(search_term) {
         <br>
         <br>
         <br>
+<div id="search" class="container">
+<h1>Search Recipes</h1>
+                <div class="row">
+                    
+
+                    <div class="col-md-10">
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input id="search_box" type="text" class="form-control input-lg" placeholder="Search Here" />
+
+                                <script>
+                                    var input = document.getElementById("search_box");
+input.addEventListener("keyup", function(event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+    document.getElementById("search_button").click();
+  }
+});
+</script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1">
+                        <button id="search_button" type="button" class="btn btn-secondary" onclick="generateRecipieResults()">Search</button>
+                    </div>
+
+                    <div class="col-md-1">
+                        <button id="voice_search_button" type="button" class="btn btn-danger">Voice</button>
+                    </div>
+                <br>
+            </div>
+        </div>
+        <br>
 
         <div id="search_results" class="container">
             <h1 id="search_header">Search Results For: ` + search_thing + `</h1>
