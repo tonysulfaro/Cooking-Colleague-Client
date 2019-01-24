@@ -46,7 +46,6 @@
 
     <main id="main_container" role="main">
 
-
         <div class="parallax text-center">
             <div class="container">
                 <br>
@@ -79,8 +78,8 @@
             <div class="container">
                 <div class="row">
                     <h1>Search Recipes</h1>
-                    <div class="col-md-10">
 
+                    <div class="col-md-10">
                         <div id="custom-search-input">
                             <div class="input-group col-md-12">
                                 <input id="search_box" type="text" class="form-control input-lg" placeholder="Search Here" />
@@ -115,6 +114,13 @@ input.addEventListener("keyup", function(event) {
             <h1>Featured Recipes</h1>
             <br>
             <br>
+
+            <div id="featured_spinner" class="text-center">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+
 
             <!--
                 <div class="col-md-4">

@@ -25,6 +25,14 @@ function generateHome(search_term) {
     request.open('get', url)
     // Send it
     request.send()
+    request.onloadend = function () {
+        var spinner_result = document.getElementById("featured_spinner");
+        if (spinner_result.style.display === "none") {
+            spinner_result.style.display = "block";
+        } else {
+            spinner_result.style.display = "none";
+        }
+    }
 
     function dumpResponse() {
         // `this` will refer to the `XMLHTTPRequest` object that executes this function
@@ -81,16 +89,6 @@ function generateHome(search_term) {
         featured_container.insertAdjacentHTML('beforeend', previews);
         console.log(featured_container);
     }
-
-}
-
-function getrecipie() {
-    let search_term = document.getElementById("search_box").value;
-    //document.getElementById("search_header").innerText = "Search Results For: " + search_term;
-    console.log(search_term);
-    document.location.href = "search-results.html";
-    console.log(document.getElementById("search_header").innerText)
-    generateRecipieResults(search_term);
 }
 
 function generateRecipieResults(search_term) {
@@ -115,8 +113,17 @@ function generateRecipieResults(search_term) {
         <div id="search_results" class="container">
             <h1 id="search_header">Search Results For: ` + search_thing + `</h1>
             <br>
+            <div id="results_spinner" class="text-center">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
         </div>`;
     featured_container.insertAdjacentHTML('beforeend', parts);
+    populate_search_results(search_thing);
+}
+
+function populate_search_results(search_thing) {
 
     var url = 'https://api.edamam.com/search?q=' + search_thing + '&app_id=d63abbc7&app_key=ad82d4418f075d5a656da60a47ad8246&from=0&to=12';
     var obj = ""
@@ -128,6 +135,14 @@ function generateRecipieResults(search_term) {
     request.open('get', url)
     // Send it
     request.send()
+    request.onloadend = function () {
+        var spinner_result = document.getElementById("results_spinner");
+        if (spinner_result.style.display === "none") {
+            spinner_result.style.display = "block";
+        } else {
+            spinner_result.style.display = "none";
+        }
+    }
 
     function dumpResponse() {
         // `this` will refer to the `XMLHTTPRequest` object that executes this function
@@ -138,7 +153,7 @@ function generateRecipieResults(search_term) {
             //console.log(obj[i].url);
         }
 
-        featured_container = document.getElementById("search_results");
+        var featured_container = document.getElementById("search_results");
 
         let count = 0;
         let previews = `<div class="row">`;
@@ -184,58 +199,7 @@ function generateRecipieResults(search_term) {
         featured_container.insertAdjacentHTML('beforeend', previews);
         console.log(featured_container);
     }
-}
-
-function start_recipe() {
-
-    let search_thing = "Chicken Vesuvio"
-
-    // remove all stuff
-    var myNode = document.getElementById("main_container");
-    while (myNode.firstChild) {
-        myNode.removeChild(myNode.firstChild);
-    }
-
-    let featured_container = document.getElementById("main_container");
-    let parts = `<br>
-        <br>
-        <br>
-        <br>
-
-        <div id="search_results" class="container">
-            <h1 id="search_header">` + search_thing + `</h1>
-            <br>
-<h3>Steps</h3>
-<div class="row">
 
 
-
-<div class="col-md-4">
-<p>* 1/2 cup olive oil</p>
-<p>* 5 cloves garlic, peeled</p>
-<p>* 2 large russet potatoes, peeled and cut into chunks</p>
-<p>* 1 3-4 pound chicken, cut into 8 pieces (or 3 pound chicken legs)</p>
-<p>* 3/4 cup white wine</p>
-<p>* 3/4 cup chicken stock</p>
-<p>* 3 tablespoons chopped parsley</p>
-<p>* 1 tablespoon dried oregano</p>
-<p>* Salt and pepper</p>
-<p>* 1 cup frozen peas, thawed</p>
-</div>
-
-<div class="col-md-4">
-<img src="https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg">
-</div>
-
-
-
-</div>
-<br>
-
-<p>1: Heat an oven to 325 degrees.  In a roasting pan (or a large (14-inch) oven-proof skillet), heat the olive oil over medium until shimmering.  Add the potatoes and garlic and cook until golden brown, about 12 minutes.  Remove to a plate, leaving behind as much oil as possible.</p>
-<p>2: Add the chicken to the skillet, skin-side down. Cook until golden and crisp, then turn and cook the other side until golden as well. Add the wine and cook until it reduces by half.</p>
-<p>3: Return the garlic and potatoes to the pan, along with the chicken stock, parsley, oregano, and a pinch of salt and pepper. Transfer to the oven and cook, uncovered, until the chicken is cooked through, about 45 minutes. Add the peas to the pan with 5 minutes left in the cooking time. Serve with the roasting juices in the pan.</p>
-        </div>`;
-    featured_container.insertAdjacentHTML('beforeend', parts);
 
 }
